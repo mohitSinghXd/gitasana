@@ -60,8 +60,6 @@ authRoutes.get("/auth/github/callback" ,async(req ,res)=>{
 })    
 
 authRoutes.get("/auth/getuser" , isauth , getuser) ; 
-
-// Asana PAT save karo — OAuth nahi, seedha .env se!
 authRoutes.get("/auth/asana/connect" , isauth , async(req , res)=>{
     try {
         const userId = req.userId
@@ -77,5 +75,6 @@ authRoutes.get("/auth/asana/connect" , isauth , async(req , res)=>{
         res.status(500).json({ message: "something went wrong" })
     }
 })
+
 
 export default authRoutes ;
