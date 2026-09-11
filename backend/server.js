@@ -5,6 +5,7 @@ import dbconnect from "./config/dbconnect.js"
 import authRoutes from "./Routes/authroutes.js"; 
 import cookieParser from "cookie-parser"; 
 import webhookroutes from "./webhook.js";
+import googleroutes from "./Routes/googleroutes.js";
 dotenv.config({quiet : true}) ;  
 const app = express() ;  
 app.use(express.json())  ; 
@@ -15,7 +16,8 @@ app.use(cors({
 }))  
 app.use(cookieParser()) ; 
 
-app.use("/api"  , authRoutes )  ;  
+app.use("/api"  , authRoutes )  ;   
+app.use("/newlogin" , googleroutes)
 app.use("/webhooks"   ,webhookroutes )
 app.get("/" , (req, res)=>{
     res.send("hello from the server") ;
